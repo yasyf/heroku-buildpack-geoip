@@ -36,7 +36,7 @@ if [ ! -d $CACHE_DIR/.geoip/libmaxminddb ]; then
   ./configure --prefix="$CACHE_DIR/.geoip/libmaxminddb" > /dev/null
   make > /dev/null
   make check > /dev/null
-  make install > /dev/null
+  make install
 else
   echo "$CACHE_DIR/.geoip/libmaxminddb already cached"
 fi
@@ -50,6 +50,7 @@ PROFILE_PATH="$BUILD_DIR/.profile.d/geo.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo "       export MAXMIND_BINARY=\"$LIBMAXMINDDB_PATH/bin/mmdblookup\"" >> $PROFILE_PATH
 echo "       export LD_LIBRARY_PATH=\"$LIBMAXMINDDB_PATH/lib\"" >> $PROFILE_PATH
+
 
 cat $PROFILE_PATH
 
