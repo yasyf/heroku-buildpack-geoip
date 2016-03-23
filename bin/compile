@@ -46,9 +46,10 @@ cp -R $CACHE_DIR/.geoip/libmaxminddb $BUILD_DIR/$VENDORED_GEOIP
 
 LIBMAXMINDDB_PATH="$BUILD_DIR/$VENDORED_GEOIP"
 
-export MAXMIND_BINARY=$LIBMAXMINDDB_PATH/bin/mmdblookup
-export LD_LIBRARY_PATH=$LIBMAXMINDDB_PATH/lib
+PROFILE_PATH="$BUILD_DIR/.profile.d/geo.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo "       export MAXMIND_BINARY=\"$LIBMAXMINDDB_PATH/bin/mmdblookup\"" >> $PROFILE_PATH
+echo "       export LD_LIBRARY_PATH=\"$LIBMAXMINDDB_PATH/lib\"" >> $PROFILE_PATH
 
-echo $MAXMIND_BINARY
-echo $LD_LIBRARY_PATH
+cat $PROFILE_PATH
 
