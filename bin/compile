@@ -33,7 +33,7 @@ if [ ! -d $CACHE_DIR/.geoip/libmaxminddb ]; then
   curl -s -L -o libmaxminddb-$VERSION.tar.gz $LIBMAXMIND_DIST_URL
   tar -zxvf libmaxminddb-$VERSION.tar.gz > /dev/null
   cd libmaxminddb-$VERSION
-  ./configure --prefix="$CACHE_DIR/.geoip/libmaxminddb"
+  ./configure --prefix="$CACHE_DIR/.geoip/libmaxminddb" > /dev/null
   make > /dev/null
   make check > /dev/null
   make install > /dev/null
@@ -48,4 +48,7 @@ LIBMAXMINDDB_PATH="$BUILD_DIR/$VENDORED_GEOIP"
 
 export MAXMIND_BINARY=\"$LIBMAXMINDDB_PATH/bin/mmdblookup
 export LD_LIBRARY_PATH=\"$LIBMAXMINDDB_PATH/lib:\$LD_LIBRARY_PATH\"
+
+echo MAXMIND_BINARY
+echo LD_LIBRARY_PATH
 
