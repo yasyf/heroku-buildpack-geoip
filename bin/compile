@@ -29,7 +29,7 @@ if [ ! -d $CACHE_DIR/libmaxminddb ]; then
   ./configure --prefix="$CACHE_DIR/libmaxminddb" > /dev/null
   make > /dev/null
   make check > /dev/null
-  make install
+  make install > /dev/null
 else
   echo "$CACHE_DIR/libmaxminddb already cached"
 fi
