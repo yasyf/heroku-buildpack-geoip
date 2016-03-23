@@ -43,7 +43,7 @@ cp -R $CACHE_DIR/libmaxminddb .
 
 cd libmaxminddb
 
-pwd
+echo "${PWD}"
 
 echo "exporting PATH and LIBRARY_PATH"
 PROFILE_PATH="$BUILD_DIR/.profile.d/libmaxminddb.sh"
