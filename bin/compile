@@ -50,7 +50,7 @@ PROFILE_PATH="$BUILD_DIR/.profile.d/geo.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo "       export MAXMIND_BINARY=\"/app/tmp/cache/.geoip/libmaxminddb/bin/mmdblookup\"" >> $PROFILE_PATH
 echo "       export LD_LIBRARY_PATH=\"/app/tmp/cache/.geoip/libmaxminddb/lib\"" >> $PROFILE_PATH
-echo "       export LD_RUN_PATH=\"/app/tmp/cache/.geoip/libmaxminddb/bin"" >> $PROFILE_PATH
+echo "       export LD_RUN_PATH=\"/app/tmp/cache/.geoip/libmaxminddb/bin\"" >> $PROFILE_PATH
 
 
 cat $PROFILE_PATH
