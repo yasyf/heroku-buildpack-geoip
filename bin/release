@@ -1,1 +1,8 @@
 #!/usr/bin/env bash
+
+cat <<EOF
+---
+config_vars:
+	PATH: $PATH:/app/vendor/libmaxminddb/bin
+	LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/app/vendor/libmaxminddb/lib:/app/vendor/libmaxminddb/include
+EOF
