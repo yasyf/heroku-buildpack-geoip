@@ -3,6 +3,6 @@
 echo "-----> Installing libmaxminddb 1.1.5"
 cd $1
 
-curl https://www.cml.pm.s3.amazonaws.com/libmaxminddb-1.1.5.tar.gz -s -O
+curl http://www.cml.pm.s3.amazonaws.com/libmaxminddb-1.1.5.tar.gz -s -O
 mkdir -p vendor/libmaxminddb
 tar -C vendor/libmaxminddb -xvf libmaxminddb-1.1.5.tar.gz
