@@ -41,6 +41,8 @@ cd $VENDOR_DIR
 # Copy libmaxminddb files to vendor dir
 cp -R $CACHE_DIR/libmaxminddb .
 
+cd libmaxminddb
+
 for f in *; do
   echo "File -> $f"
 done
