@@ -41,16 +41,9 @@ cd $VENDOR_DIR
 # Copy libmaxminddb files to vendor dir
 cp -R $CACHE_DIR/libmaxminddb .
 
-cd libmaxminddb
-cd include
-
-for f in *; do
-  echo "File -> $f"
-done
-
 echo "exporting PATH and LIBRARY_PATH"
 PROFILE_PATH="$BUILD_DIR/.profile.d/libmaxminddb.sh"
 mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$PATH:vendor/libmaxminddb/bin"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/libmaxminddb/lib:vendor/libmaxminddb/include"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:$BUILD_DIR/vendor/libmaxminddb/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/vendor/libmaxminddb/lib:$BUILD_DIR/vendor/libmaxminddb/include"' >> $PROFILE_PATH
 
