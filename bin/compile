@@ -9,15 +9,25 @@ echo $BUILD_DIR
 echo $CACHE_DIR
 echo $ENV_FILE
 
-VERSION="1.1.5"
+VERSION="1.3.0"
 LIBMAXMIND_DIST_FILE="libmaxminddb-$VERSION.tar.gz"
 LIBMAXMIND_DIST_URL="https://github.com/maxmind/libmaxminddb/releases/download/$VERSION/$LIBMAXMIND_DIST_FILE"
+GEOLITECITY_FILE="GeoLite2-City.mmdb"
+GEOLITECITY_URL="http://geolite.maxmind.com/download/geoip/database/$GEOLITECITY_FILE"
 
-echo "Preparing directoryies: $CACHE_DIR/.geoip  $BUILD_DIR/$VENDORED_GEOIP"
+echo "Preparing directories: $CACHE_DIR/.geoip  $BUILD_DIR/$VENDORED_GEOIP"
 
 mkdir -p $CACHE_DIR/.geoip
-
 cd $CACHE_DIR/.geoip
+
+echo "-----> Fetching $GEOLITECITY_FILE"
+
+if [ ! -f $GEOLITECITY_FILE ]; then
+  curl -s -L -o ${GEOLITECITY_FILE}.gz $GEOLITECITY_URL
+  gunzip ${GEOLITECITY_FILE}.gz > /dev/null
+else
+  echo "$GEOLITECITY_FILE already cached"
+fi
 
 echo "-----> Installing libmaxminddb $VERSION"
 
@@ -41,9 +51,14 @@ cd $VENDOR_DIR
 # Copy libmaxminddb files to vendor dir
 cp -R $CACHE_DIR/libmaxminddb .
 
+mkdir -p $VENDOR_DIR/geoip
+cp $CACHE_DIR/.geoip/$GEOLITECITY_FILE geoip/$GEOLITECITY_FILE
+GEOIP_DB_PATH="/app/$VENDOR_DIR/geoip/$GEOLITECITY_FILE"
+
 echo "exporting PATH and LIBRARY_PATH"
 PROFILE_PATH="$BUILD_DIR/.profile.d/libmaxminddb.sh"
 mkdir -p $(dirname $PROFILE_PATH)
+echo "export GEOIP_DB_PATH=\"$GEOIP_DB_PATH\"" >> $PROFILE_PATH
 echo 'export PATH="$PATH:$BUILD_DIR/vendor/libmaxminddb/bin"' >> $PROFILE_PATH
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/vendor/libmaxminddb/lib:$BUILD_DIR/vendor/libmaxminddb/include"' >> $PROFILE_PATH
 
