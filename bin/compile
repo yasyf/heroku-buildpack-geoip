@@ -9,11 +9,11 @@ echo $BUILD_DIR
 echo $CACHE_DIR
 echo $ENV_FILE
 
-VERSION="1.3.0"
+VERSION="1.1.5"
 LIBMAXMIND_DIST_FILE="libmaxminddb-$VERSION.tar.gz"
 LIBMAXMIND_DIST_URL="https://github.com/maxmind/libmaxminddb/releases/download/$VERSION/$LIBMAXMIND_DIST_FILE"
 GEOLITECITY_FILE="GeoLite2-City.mmdb"
-GEOLITECITY_URL="http://geolite.maxmind.com/download/geoip/database/$GEOLITECITY_FILE"
+GEOLITECITY_URL="http://geolite.maxmind.com/download/geoip/database/$GEOLITECITY_FILE.gz"
 
 echo "Preparing directories: $CACHE_DIR/.geoip  $BUILD_DIR/$VENDORED_GEOIP"
 
