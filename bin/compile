@@ -11,7 +11,7 @@ GEOLITECITY_URL="http://geolite.maxmind.com/download/geoip/database/$GEOLITECITY
 mkdir -p $CACHE_DIR/geoip
 cd $CACHE_DIR/geoip
 
-echo "-----> Installing libmaxminddb $VERSION"
+echo "-----> Installing libmaxminddb"
 add-apt-repository ppa:maxmind/ppa
 apt-get update
 apt-get install libmaxminddb0 libmaxminddb-dev mmdb-bin
