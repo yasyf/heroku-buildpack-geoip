@@ -51,8 +51,8 @@ cd $VENDOR_DIR
 # Copy libmaxminddb files to vendor dir
 cp -R $CACHE_DIR/libmaxminddb .
 
-mkdir -p $VENDOR_DIR/geoip
-cp $CACHE_DIR/.geoip/$GEOLITECITY_FILE geoip/$GEOLITECITY_FILE
+mkdir -p geoip
+cp $CACHE_DIR/.geoip/$GEOLITECITY_FILE geoip/
 GEOIP_DB_PATH="/app/$VENDOR_DIR/geoip/$GEOLITECITY_FILE"
 
 echo "exporting PATH and LIBRARY_PATH"
