@@ -3,7 +3,6 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_FILE=$3
-VENDOR_DIR="vendor"
 
 GEOLITECITY_FILE="GeoLite2-City.mmdb"
 GEOLITECITY_URL="http://geolite.maxmind.com/download/geoip/database/$GEOLITECITY_FILE.gz"
@@ -20,11 +19,11 @@ else
   echo "$GEOLITECITY_FILE already cached"
 fi
 
-mkdir -p $VENDOR_DIR/geoip
-cd $VENDOR_DIR/geoip
+mkdir -p /vendor/geoip
+cd /vendor/geoip
 
 cp $CACHE_DIR/geoip/$GEOLITECITY_FILE .
-GEOIP_DB_PATH="/app/$VENDOR_DIR/geoip/$GEOLITECITY_FILE"
+GEOIP_DB_PATH="/app/vendor/geoip/$GEOLITECITY_FILE"
 
 PROFILE_PATH="$BUILD_DIR/.profile.d/geoip.sh"
 mkdir -p $(dirname $PROFILE_PATH)
